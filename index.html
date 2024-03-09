@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Pau Portfolio</title>
+
+    <link rel="icon" type="image/png" href="images/penguin.jpg">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <section class="presentacion">
+      <h1>
+        Pau Martínez i Ríos
+      </h1>
+      
+      <p>
+        Buenas me presento. Mi nombre es Pau Martínez y actualmente estoy cursando 
+        el tercer año de Ingeniería Informática en la Universitat Politècnica de Catalunya.
+        Estoy muy motivado en la búsqueda de nuevas oportunidades para aprender y crecer. 
+      </p>
+    </section>
+
+    <button id="contact">
+      <a href="mailto:paumartinezrios@gmail.com">Contact</a>
+    </button>
+    
+    <div class="container">
+      <a href="https://github.com/paumartinezrs" target="_blank" rel="noreferrer">
+        <img src="images/git.svg">
+      </a>
+      <a href="https://www.linkedin.com/in/pau-martinez-i-rios/" target="_blank" rel="noreferrer">
+        <img id="linkedin" src="images/linkedin.svg">
+      </a>
+    </div>
+    
+    
+      
+    <section class="cuadricula">
+      <article>
+        <h2>Proyectos destacables</h2>
+
+        <p> Algunos de los proyectos, académicos o personales, relacionados con la informática
+          en los que tenido la oportunidad de contribuir.</p>
+      </article>
+      <article>
+          <h3>Intérprete de SQL</h3>
+          <p>Gracias a Python y ANTLR4, una herramienta usada para el desarollo de compiladores en la creación de 
+          lenguajes de programación, desarolle un interprete del lenguaje SQL. 
+          </p>
+          <p>Además, para tratar con los datos de las tablas csv, usé la conocida librería Pandas y para la
+            interfície gráfica Streamlit.
+          </p>
+        <footer>
+          Tecnologías implicadas
+          <ul>
+            <li>Python</li>
+            <li>ANTLR4</li>
+            <li>Pandas</li>
+            <li>Streamlit</li>
+          </ul>
+        </footer>
+      </article>
+
+      <article>
+        <h3>Implementación de una estructura de datos</h3>
+        <p>Este proyecto consitió en la implementación de un KD-Tree. Estas son estructuras de datos 
+          utilizadas para organizar puntos en un espacio k-dimensional 
+          realmente útiles para facilitar operaciones como la búsqueda de manera eficiente. Para conseguirlo
+          divide recursivamente el espacio a lo largo de los ejes en regiones más pequeñas, creando una estructura de árbol binario jerárquico.</p>
+        <p>Los árboles KD, en dimensiones bajas a moderadas, son particularmente eficientes para búsquedas de vecinos más cercanos. 
+          Durante una búsqueda, el árbol es recorrido para encontrar el punto más cercano a un punto de consulta dado. 
+          Esto se hace explorando recursivamente las ramas del árbol y priorizando aquellas que tienen 
+          más probabilidades de contener el vecino más cercano.</p>
+        <footer>
+          Tecnologías implicadas
+          <ul>
+            <li>C++</li>
+          </ul>
+        </footer>
+      </article>
+      
+      <article>
+        <h3>Uso de algoritmos de inteligencia artificial</h3>
+        <p>El objetivo de este proyecto fue, mediante la aplicación de algoritmos de 
+          inteligencia artificial, específicamente Hill Climbing y Simulated Annealing,
+          desarrollar la planificación óptima del transporte de bicicletas 
+          del servicio Bicing entre las diferentes estaciones urbanas.</p>
+        <p>El objetivo es recolectar bicicletas de estaciones con baja previsión de demanda 
+          y trasladarlas a aquellas donde se necesiten con mayor urgencia, todo ello mientras 
+          se busca minimizar los costes asociados al transporte entre estaciones.
+        </p>
+        <footer>
+          Tecnologías implicadas
+          <ul>
+            <li>Java</li>
+            <li>Algoritmos de búsqueda local</li>
+          </ul>
+        </footer>
+      </article>
+
+      <article>
+        <h3>Creación de una API REST para una aplicación</h3>
+        <p>Este proyecto me sirvió para introducirme y aprender las bases del desarollo backend. 
+          En él, desarrollé API para una aplicación de contactos en la que se permitía mediante peticiones HTTP guardar, consultar, 
+          editar y eliminar contactos. Para ello creé una API REST siguiendo la arquitectura Modelo-Vista-Controlador gracias a la cual es inmediato 
+          cambiar entre modelos de datos para el manejo de los contactos.
+        </p>
+        <footer>
+          Tecnologías implicadas
+          <ul>
+            <li>Node.js</li>
+            <li>Express</li>
+            <li>SQLite</li>
+            <li>JSON</li>
+          </ul>
+        </footer>
+      </article>
+    </section>
+    <dialog id="dialog">
+      ¡Muchas gracias por tomar tiempo para ver mi portfolio! Para cualquier duda, no dudes en contactarme por email o Linkedin :)
+      <button id="cerrar">Cerrar</button>
+    </dialog>
+
+    
+    <footer id="footer" class="container">
+      <button id="abrir">¡Gracias!</button>
+    </footer>
+    <script>
+      window.abrir.addEventListener('click', () => {
+        window.dialog.showModal()
+      })
+      window.cerrar.addEventListener('click', () => {
+        window.dialog.close()
+      })
+    </script>
+  </body>
+</html>
