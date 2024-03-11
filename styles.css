@@ -34,7 +34,7 @@ section {
     margin: 60px 0px;
     padding: 5px;
     gap: 20px;
-    height: 55px;
+    height: 60px;
 }
 
 #footer {
@@ -47,6 +47,8 @@ button {
     border-radius: 8px;
     cursor: pointer;
     height: 30px;
+    color: rgb(244, 159, 0);
+    font-weight: bold;
 }
 
 #contact {
@@ -55,7 +57,8 @@ button {
     position: fixed;
     right: 0;
     bottom: 0;
-    margin: 5px;
+    margin: 10px;
+    padding: 0px;
 }
 
 img {
@@ -67,7 +70,8 @@ img {
 }
 
 a {
-    color: black;
+    color: rgb(244, 159, 0);
+    text-decoration: none;
 }
 
 @keyframes show {
@@ -102,4 +106,16 @@ article {
 
 article:first-child {
     border: 0px;
+}
+
+.naranja {
+    color: rgb(244, 159, 0);
+}
+
+h3 {
+    color: rgb(244, 159, 0);
+}
+
+.boton:hover {
+    transform: scale(1.2);
 }
