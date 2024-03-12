@@ -116,6 +116,10 @@ h3 {
     color: rgb(244, 159, 0);
 }
 
+.boton {
+    transition-duration: .4s;
+}
+
 .boton:hover {
     transform: scale(1.2);
 }
