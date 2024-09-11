@@ -117,9 +117,28 @@ h3 {
 }
 
 .boton {
-    transition-duration: .4s;
+    transition-duration: .2s;
 }
 
 .boton:hover {
     transform: scale(1.2);
+    transition-duration: .5s;
+}
+
+.titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.idioma {
+    font-size: 26px;
+}
+
+.en {
+    color: rgb(244, 159, 0);;
+}
+
+.es {
+    color: grey;
 }

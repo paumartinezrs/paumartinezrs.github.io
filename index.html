@@ -11,13 +11,19 @@
 
   <body>
     <section class="presentacion">
-      <h1>
-        Pau <span class="naranja">Martínez</span> i Ríos
+      <h1 class="titulo">
+        <span>
+          Pau <span class="naranja">Martínez</span> i Ríos
+        </span>
+        <span class="idioma">
+          <a href="index.html" style="color: rgb(244, 159, 0);">en</a>
+          <a href="indice.html" style="color: grey">es</a>
+        </span>
       </h1>
       
       <p>
-        Estudiante de Ingeniería Informática en la Universitat Politècnica de Catalunya.
-        Muy motivado en la búsqueda de nuevas oportunidades para aprender y crecer. 
+        Computer Science student at the Polytechnic University of Catalonia.
+        Highly motivated in seeking new opportunities to learn and grow.
       </p>
     </section>
 
@@ -38,21 +44,21 @@
       
     <section class="cuadricula">
       <article>
-        <h2>Proyectos destacables</h2>
+        <h2>Highlighted Projects</h2>
 
-        <p> Algunos de los proyectos, académicos o personales, relacionados con la informática
-          en los que tenido la oportunidad de contribuir.</p>
+        <p>Some of the academic or personal projects related to computer science
+          that I have had the opportunity to contribute to.</p>
       </article>
       <article>
-          <h3>Intérprete de SQL</h3>
-          <p>Gracias a Python y ANTLR4, una herramienta usada para el desarollo de compiladores en la creación de 
-          lenguajes de programación, desarolle un interprete del lenguaje SQL. 
+          <h3>SQL Interpreter</h3>
+          <p>Thanks to Python and ANTLR4, a tool used for compilers development.
+          I created an interpreter for the SQL language.
           </p>
-          <p>Además, para tratar con los datos de las tablas csv, usé la conocida librería Pandas y para la
-            interfície gráfica Streamlit.
+          <p>In addition, to handle data from csv tables, I used the well-known Pandas library and for the 
+            graphical interface, Streamlit.
           </p>
         <footer>
-          <span class="naranja">Tecnologías implicadas</span>
+          <span class="naranja">Technologies involved</span>
           <ul>
             <li>Python</li>
             <li>ANTLR4</li>
@@ -63,17 +69,18 @@
       </article>
 
       <article>
-        <h3>Implementación de una estructura de datos</h3>
-        <p>Este proyecto consitió en la implementación de un KD-Tree. Estas son estructuras de datos 
-          utilizadas para organizar puntos en un espacio k-dimensional 
-          realmente útiles para facilitar operaciones como la búsqueda de manera eficiente. Para conseguirlo
-          divide recursivamente el espacio a lo largo de los ejes en regiones más pequeñas, creando una estructura de árbol binario jerárquico.</p>
-        <p>Los árboles KD, en dimensiones bajas a moderadas, son particularmente eficientes para búsquedas de vecinos más cercanos. 
-          Durante una búsqueda, el árbol es recorrido para encontrar el punto más cercano a un punto de consulta dado. 
-          Esto se hace explorando recursivamente las ramas del árbol y priorizando aquellas que tienen 
-          más probabilidades de contener el vecino más cercano.</p>
+        <h3>Implementation of a Data Structure</h3>
+        <p>This project consisted of the implementation of a KD-Tree. These are data structures 
+          used to organize points in a k-dimensional space, 
+          particularly useful for facilitating efficient operations like search. To achieve this, 
+          it recursively divides the space along the axes into smaller regions, creating a hierarchical binary tree structure.</p>
+        <p>KD-trees, in low to moderate dimensions, are particularly efficient for nearest-neighbor searches. 
+          During a search, the tree is traversed to find the point closest to a given query point. 
+          This is done by recursively exploring the branches of the tree and prioritizing those that are 
+          more likely to contain the nearest neighbor.
+        </p>
         <footer>
-          <span class="naranja">Tecnologías implicadas</span>
+          <span class="naranja">Technologies involved</span>
           <ul>
             <li>C++</li>
           </ul>
@@ -81,33 +88,32 @@
       </article>
       
       <article>
-        <h3>Uso de algoritmos de inteligencia artificial</h3>
-        <p>El objetivo de este proyecto fue, mediante la aplicación de algoritmos de 
-          inteligencia artificial, específicamente Hill Climbing y Simulated Annealing,
-          desarrollar la planificación óptima del transporte de bicicletas 
-          del servicio Bicing entre las diferentes estaciones urbanas.</p>
-        <p>El objetivo es recolectar bicicletas de estaciones con baja previsión de demanda 
-          y trasladarlas a aquellas donde se necesiten con mayor urgencia, todo ello mientras 
-          se busca minimizar los costes asociados al transporte entre estaciones.
+        <h3>Use of Artificial Intelligence Algorithms</h3>
+        <p>The goal of this project was, through the application of artificial intelligence algorithms, 
+          specifically Hill Climbing and Simulated Annealing,
+          to develop the optimal bike transport planning for the Bicing service between different urban stations.</p>
+        <p>The objective is to collect bikes from stations with low demand forecasts 
+          and transport them to those where they are needed most urgently, all while 
+          minimizing the costs associated with transport between stations.
         </p>
         <footer>
-          <span class="naranja">Tecnologías implicadas</span>
+          <span class="naranja">Technologies involved</span>
           <ul>
             <li>Java</li>
-            <li>Algoritmos de búsqueda local</li>
+            <li>Local search algorithms</li>
           </ul>
         </footer>
       </article>
 
       <article>
-        <h3>Creación de una API REST para una aplicación</h3>
-        <p>Este proyecto me sirvió para introducirme y aprender las bases del desarollo backend. 
-          En él, desarrollé API para una aplicación de contactos en la que se permitía mediante peticiones HTTP guardar, consultar, 
-          editar y eliminar contactos. Para ello creé una API REST siguiendo la arquitectura Modelo-Vista-Controlador gracias a la cual es inmediato 
-          cambiar entre modelos de datos para el manejo de los contactos.
+        <h3>Creation of a REST API for an Application</h3>
+        <p>This project allowed me to learn the basics of backend development. 
+          In it, I developed an API for a contact application where, through HTTP requests, users could save, query, 
+          edit, and delete contacts. To do this, I created a REST API following the Model-View-Controller architecture, 
+          making it easy to switch between data models.
         </p>
         <footer>
-          <span class="naranja">Tecnologías implicadas</span>
+          <span class="naranja">Technologies involved</span>
           <ul>
             <li>Node.js</li>
             <li>Express</li>
@@ -118,13 +124,13 @@
       </article>
     </section>
     <dialog id="dialog">
-      ¡Muchas gracias por tomar tiempo para ver mi portfolio! Para cualquier duda, no dudes en contactarme por email o Linkedin :)
-      <button class="boton" id="cerrar">Cerrar</button>
+      Thank you so much for taking the time to view my portfolio! If you have any questions, don't hesitate to contact me via email or LinkedIn :)
+      <button class="boton" id="cerrar">Close</button>
     </dialog>
 
     
     <footer id="footer" class="container">
-      <button class="boton" id="abrir">¡Gracias!</button>
+      <button class="boton" id="abrir">Thank you!</button>
     </footer>
     <script>
       window.abrir.addEventListener('click', () => {
