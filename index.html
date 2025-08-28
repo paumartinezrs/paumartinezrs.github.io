@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pau Portfolio</title>
+  <title>Pau's Portfolio</title>
 
   <link rel="icon" type="image/png" href="images/pengu.png" />
 
@@ -112,16 +112,14 @@
       color: var(--accent);
     }
 
+    /* antes .lang tenía fondo y borde, ahora lo limpiamos */
     .lang {
-      display: inline-flex;
-      gap: 10px;
-      font-size: 18px;
-      background: var(--panel);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius-sm);
-      padding: 8px 10px;
-      box-shadow: var(--shadow);
+      background: none;
+      border: none;
+      box-shadow: none;
+      padding: 0;
     }
+
 
     .lang .toggle {
       display: inline-flex;
@@ -325,20 +323,31 @@
       border: 0;
     }
 
-    .pill {
-  background: var(--panel);
-  border: 1px solid var(--card-border);
-  padding: 6px 16px;
-  border-radius: 999px;
-  color: var(--accent);
-  font-weight: 600;
-  cursor: pointer;
-  transition: background .2s ease, transform .2s ease;
-}
-.pill:hover {
-  background: rgba(244,159,0,0.1);
-  transform: translateY(-1px);
-}
+    .pill { 
+      display: inline-flex;              /* botón en línea */
+      align-items: center;               /* centra vertical */
+      justify-content: center;           /* centra horizontal */
+
+      height: 40px;                      /* alto fijo */
+      min-width: 60px;                   /* ancho mínimo */
+      padding: 0 16px;                   /* solo a los lados, no arriba/abajo */
+      
+      background: var(--panel);
+      border: 1px solid var(--card-border);
+      border-radius: 999px;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .pill:hover {
+      background: rgba(244,159,0,0.1);
+      transform: translateY(-1px);
+    }
+
+
 
 
   </style>
@@ -358,9 +367,9 @@
     </header>
 
     <p id="intro" class="intro"
-      data-en="Computer Science student at the Polytechnic University of Catalonia. Highly motivated in seeking new opportunities to learn and grow."
+      data-en="Computer Science student at the Universitat Politècnica de Catalunya. Highly motivated in seeking new opportunities to learn and grow."
       data-es="Estudiante de Ingeniería Informática en la Universitat Politècnica de Catalunya. Altamente motivado en buscar nuevas oportunidades para aprender y crecer.">
-      Computer Science student at the Polytechnic University of Catalonia. Highly motivated in seeking new opportunities
+      Computer Science student at the Universitat Politècnica de Catalunya. Highly motivated in seeking new opportunities
       to learn and grow.
     </p>
 
