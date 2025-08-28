@@ -1,144 +1,552 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Pau Portfolio</title>
+<html lang="en">
 
-    <link rel="icon" type="image/png" href="images/pengu.png">
-    <link rel="stylesheet" href="styles.css">
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pau Portfolio</title>
 
-  <body>
-    <section class="presentacion">
-      <h1 class="titulo">
-        <span>
-          Pau <span class="naranja">Martínez</span> i Ríos
-        </span>
-        <span class="idioma">
-          <a href="index.html" style="color: rgb(244, 159, 0);">en</a>
-          <a href="indice.html" style="color: grey">es</a>
-        </span>
-      </h1>
-      
-      <p>
-        Computer Science student at the Polytechnic University of Catalonia.
-        Highly motivated in seeking new opportunities to learn and grow.
-      </p>
-    </section>
+  <link rel="icon" type="image/png" href="images/pengu.png" />
 
-    <button class="boton" id="contact">
-      <a href="mailto:paumartinezrios@gmail.com">Contact</a>
-    </button>
-    
-    <div class="container">
-      <a href="https://github.com/paumartinezrs" target="_blank" rel="noreferrer">
-        <img class="boton" src="images/git.svg">
+  <style>
+    /* ====== RESET + VARIABLES ====== */
+    :root {
+      --bg: #0b0c10;
+      --panel: #12131a;
+      --text: #e6e6e6;
+      --muted: #a7a7b0;
+      --accent: #f49f00;
+      /* naranja */
+      --ring: 0 0 0 3px rgba(244, 159, 0, 0.25);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --maxw: 1050px;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f7f7fb;
+        --panel: #ffffff;
+        --text: #1a1a1d;
+        --muted: #5a5a66;
+        --card-border: rgba(10, 10, 20, 0.08);
+        --shadow: 0 8px 24px rgba(10, 10, 20, 0.08);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .toolbar a img {
+        filter: invert(1) brightness(1.2);
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      color: var(--text);
+      background: radial-gradient(1200px 700px at 10% -10%, rgba(244, 159, 0, 0.08), transparent 40%),
+        radial-gradient(1000px 600px at 90% 10%, rgba(244, 159, 0, 0.06), transparent 45%),
+        var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Quitar banding en modo claro */
+    @media (prefers-color-scheme: light) {
+      body {
+        background: var(--bg);
+      }
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:focus-visible {
+      outline: var(--ring);
+      border-radius: 8px;
+    }
+
+    /* ====== LAYOUT ====== */
+    .wrapper {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 32px 20px 100px;
+    }
+
+    header.hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+      margin: 24px 0 8px;
+    }
+
+    .title {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      align-items: baseline;
+    }
+
+    h1 {
+      font-size: clamp(36px, 5vw, 56px);
+      margin: 0;
+      letter-spacing: -0.5px;
+    }
+
+    .naranja {
+      color: var(--accent);
+    }
+
+    .lang {
+      display: inline-flex;
+      gap: 10px;
+      font-size: 18px;
+      background: var(--panel);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 8px 10px;
+      box-shadow: var(--shadow);
+    }
+
+    .lang .toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 36px;
+      padding: 0 14px;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      background: #fff0;
+      color: var(--accent);
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .15s ease, background .2s ease, box-shadow .2s ease;
+    }
+
+    .lang .toggle:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+      background: rgba(244, 159, 0, 0.08);
+    }
+
+    .lang .toggle:focus-visible {
+      outline: var(--ring);
+    }
+
+    .intro {
+      margin: 6px 0 24px;
+      color: var(--muted);
+      font-size: clamp(16px, 2.2vw, 20px);
+    }
+
+    /* Social / Contact bar */
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--panel);
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow);
+      margin: 28px 0 40px;
+      width: fit-content;
+    }
+
+    .toolbar a img {
+      width: 28px;
+      height: 28px;
+      display: block;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      padding: 0 16px;
+      border-radius: 10px;
+      border: 1px solid var(--card-border);
+      background: #fff0;
+      color: var(--accent);
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .15s ease, background .2s ease, box-shadow .2s ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+      background: rgba(244, 159, 0, 0.08);
+    }
+
+    .cta:focus-visible {
+      outline: var(--ring);
+    }
+
+    /* ====== GRID CARDS ====== */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    @media (min-width: 760px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    article.card {
+      background: var(--panel);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      /* padding: 18px 18px 14px; */
+        padding: 24px 24px 20px;
+      box-shadow: var(--shadow);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      display: flex;
+      flex-direction: column;
+      /* para empujar tech al fondo */
+    }
+
+    article.card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .22);
+      border-color: rgba(244, 159, 0, .25);
+    }
+
+    article.card h2,
+    article.card h3 {
+      margin: 6px 0 8px;
+      color: var(--accent);
+      text-align: left;
+    }
+
+    article.card p {
+      flex-grow: 1;
+    }
+
+    /* empuja tech abajo */
+    .lead {
+      margin-top: 2px;
+      color: var(--muted);
+    }
+
+    .tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .tech li {
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid var(--card-border);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .links {
+      margin-top: 8px;
+    }
+
+    .links a {
+      margin-right: 14px;
+      font-weight: 700;
+    }
+
+    /* Dialog */
+    dialog {
+      background: var(--panel);
+      color: var(--text);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 18px 18px 12px;
+      box-shadow: var(--shadow);
+    }
+
+    dialog::backdrop {
+      background: rgba(0, 0, 0, .35);
+    }
+
+    .dialog-actions {
+      text-align: right;
+      margin-top: 12px;
+    }
+
+    .btn {
+      background: transparent;
+      border: 1px solid var(--card-border);
+      color: var(--accent);
+      font-weight: 700;
+      border-radius: 10px;
+      padding: 8px 14px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: rgba(244, 159, 0, 0.08);
+    }
+
+    /* Utilities */
+    .muted {
+      color: var(--muted);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+
+    .pill {
+  background: var(--panel);
+  border: 1px solid var(--card-border);
+  padding: 6px 16px;
+  border-radius: 999px;
+  color: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .2s ease, transform .2s ease;
+}
+.pill:hover {
+  background: rgba(244,159,0,0.1);
+  transform: translateY(-1px);
+}
+
+
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header class="hero">
+      <div class="title">
+        <h1>Pau <span class="naranja">Martínez</span> i Ríos</h1>
+      </div>
+      <nav class="lang" aria-label="Language switcher">
+        <button id="toggle-lang" class="pill" type="button">ES</button>
+      </nav>
+
+
+    </header>
+
+    <p id="intro" class="intro"
+      data-en="Computer Science student at the Polytechnic University of Catalonia. Highly motivated in seeking new opportunities to learn and grow."
+      data-es="Estudiante de Ingeniería Informática en la Universitat Politècnica de Catalunya. Altamente motivado en buscar nuevas oportunidades para aprender y crecer.">
+      Computer Science student at the Polytechnic University of Catalonia. Highly motivated in seeking new opportunities
+      to learn and grow.
+    </p>
+
+    <div class="toolbar" role="group" aria-label="Social and contact">
+      <a id="contact-link" class="cta" href="mailto:paumartinezrios@gmail.com" data-en="Contact"
+        data-es="Contacto">Contact</a>
+      <a href="https://github.com/paumartinezrs" target="_blank" rel="noreferrer" aria-label="GitHub">
+        <img src="images/git.svg" alt="GitHub" />
       </a>
-      <a href="https://www.linkedin.com/in/pau-martinez-i-rios/" target="_blank" rel="noreferrer">
-        <img class="boton" id="linkedin" src="images/linkedin.svg">
+      <a href="https://www.linkedin.com/in/pau-martinez-i-rios/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+        <img src="images/linkedin.svg" alt="LinkedIn" />
       </a>
     </div>
-    
-    
-      
-    <section class="cuadricula">
-      <article>
-        <h2>Highlighted Projects</h2>
 
-        <p>Some of the academic or personal projects related to computer science
-          that I have had the opportunity to contribute to.</p>
-      </article>
-      <article>
-          <h3>SQL Interpreter</h3>
-          <p>Thanks to Python and ANTLR4, a tool used for compilers development.
-          I created an interpreter for the SQL language.
-          </p>
-          <p>In addition, to handle data from csv tables, I used the well-known Pandas library and for the 
-            graphical interface, Streamlit.
-          </p>
-        <footer>
-          <span class="naranja">Technologies involved</span>
-          <ul>
-            <li>Python</li>
-            <li>ANTLR4</li>
-            <li>Pandas</li>
-            <li>Streamlit</li>
-          </ul>
-        </footer>
+    <section class="grid">
+      <article class="card">
+        <h2 data-en="Highlighted Projects" data-es="Proyectos destacados">Highlighted Projects</h2>
+        <p class="lead"
+          data-en="Some of the academic or personal projects related to computer science that I have had the opportunity to contribute to."
+          data-es="Algunos de los proyectos académicos o personales relacionados con la informática en los que he tenido la oportunidad de contribuir.">
+          Some of the academic or personal projects related to computer science that I have had the opportunity to
+          contribute to.
+        </p>
       </article>
 
-      <article>
-        <h3>Implementation of a Data Structure</h3>
-        <p>This project consisted of the implementation of a KD-Tree. These are data structures 
-          used to organize points in a k-dimensional space, 
-          particularly useful for facilitating efficient operations like search. To achieve this, 
-          it recursively divides the space along the axes into smaller regions, creating a hierarchical binary tree structure.</p>
-        <p>KD-trees, in low to moderate dimensions, are particularly efficient for nearest-neighbor searches. 
-          During a search, the tree is traversed to find the point closest to a given query point. 
-          This is done by recursively exploring the branches of the tree and prioritizing those that are 
-          more likely to contain the nearest neighbor.
+      <!-- CliffyJump -->
+      <article class="card">
+        <h3 data-en="CliffyJump" data-es="CliffyJump">CliffyJump</h3>
+        <p data-en="3D platformer built in Unity where the player advances through multiple levels by timing jumps across moving and static platforms. Emphasis on tight controls, readable level design, and progressive difficulty."
+          data-es="Videojuego de plataformas 3D desarrollado en Unity donde el jugador avanza por varios niveles saltando en el momento oportuno sobre plataformas móviles y estáticas. Énfasis en controles precisos, niveles legibles y dificultad progresiva.">
+          3D platformer built in Unity where the player advances through multiple levels by timing jumps across moving
+          and static platforms. Emphasis on tight controls, readable level design, and progressive difficulty.
         </p>
-        <footer>
-          <span class="naranja">Technologies involved</span>
-          <ul>
-            <li>C++</li>
-          </ul>
-        </footer>
-      </article>
-      
-      <article>
-        <h3>Use of Artificial Intelligence Algorithms</h3>
-        <p>The goal of this project was, through the application of artificial intelligence algorithms, 
-          specifically Hill Climbing and Simulated Annealing,
-          to develop the optimal bike transport planning for the Bicing service between different urban stations.</p>
-        <p>The objective is to collect bikes from stations with low demand forecasts 
-          and transport them to those where they are needed most urgently, all while 
-          minimizing the costs associated with transport between stations.
+        <p data-en="Implemented modular level prefabs, obstacle logic, and camera framing for clear navigation and jump timing."
+          data-es="Se implementaron prefabs modulares de niveles, lógica de obstáculos y encuadre de cámara para facilitar la navegación y el cálculo de los saltos.">
+          Implemented modular level prefabs, obstacle logic, and camera framing for clear navigation and jump timing.
         </p>
-        <footer>
-          <span class="naranja">Technologies involved</span>
-          <ul>
-            <li>Java</li>
-            <li>Local search algorithms</li>
-          </ul>
-        </footer>
+        <ul class="tech">
+          <li>Unity</li>
+          <li>C#</li>
+        </ul>
       </article>
 
-      <article>
-        <h3>Creation of a REST API for an Application</h3>
-        <p>This project allowed me to learn the basics of backend development. 
-          In it, I developed an API for a contact application where, through HTTP requests, users could save, query, 
-          edit, and delete contacts. To do this, I created a REST API following the Model-View-Controller architecture, 
-          making it easy to switch between data models.
+      <!-- Speaking Bot (IELTS) -->
+      <article class="card">
+        <h3 data-en="Speaking Bot (IELTS)" data-es="Speaking Bot (IELTS)">Speaking Bot (IELTS)</h3>
+        <p data-en="AI-powered speaking practice assistant focused on IELTS oral exams. Simulates interview flow, provides prompts, tracks speaking time, and delivers feedback on fluency, coherence, and vocabulary range."
+          data-es="Asistente de práctica oral con IA enfocado en los exámenes orales de IELTS. Simula el flujo de la entrevista, proporciona preguntas, mide el tiempo de habla y ofrece retroalimentación sobre fluidez, coherencia y vocabulario.">
+          AI-powered speaking practice assistant focused on IELTS oral exams. Simulates interview flow, provides
+          prompts, tracks speaking time, and delivers feedback on fluency, coherence, and vocabulary range.
         </p>
-        <footer>
-          <span class="naranja">Technologies involved</span>
-          <ul>
-            <li>Node.js</li>
-            <li>Express</li>
-            <li>SQLite</li>
-            <li>JSON</li>
-          </ul>
-        </footer>
+        <p data-en="Born from a personal need while preparing for the exam, designed to offer an on-demand practice partner that adapts to user responses."
+          data-es="Nació de una necesidad personal al preparar el examen; diseñado para ofrecer un compañero de práctica bajo demanda que se adapta a las respuestas del usuario.">
+          Born from a personal need while preparing for the exam, designed to offer an on-demand practice partner that
+          adapts to user responses.
+        </p>
+        <ul class="tech">
+          <li>JavaScript</li>
+          <li>Laravel</li>
+          <li>Speech-to-Text / Text-to-Speech</li>
+          <li>LLM API</li>
+        </ul>
+      </article>
+
+      <!-- Animated Series Classifier -->
+      <article class="card">
+        <h3 data-en="Animated Series Classifier" data-es="Clasificador de series animadas">Animated Series Classifier
+        </h3>
+        <p data-en="Computer vision pipeline that takes a screenshot from an animated series, extracts visual features, and predicts the most likely series. Explores transfer learning and classical feature descriptors for robust classification."
+          data-es="Pipeline de visión por computador que toma una captura de pantalla de una serie animada, extrae características visuales y predice la serie más probable. Explora transfer learning y descriptores clásicos para una clasificación robusta.">
+          Computer vision pipeline that takes a screenshot from an animated series, extracts visual features, and
+          predicts the most likely series. Explores transfer learning and classical feature descriptors for robust
+          classification.
+        </p>
+        <ul class="tech">
+          <li>MATLAB</li>
+        </ul>
+      </article>
+
+      <!-- Generative Models: Cats & Dogs -->
+      <article class="card">
+        <h3 data-en="Generative Models: Cats & Dogs" data-es="Modelos generativos: Cats & Dogs">Generative Models: Cats
+          &amp; Dogs</h3>
+        <p data-en="Training and comparison of generative models on a small cats vs. dogs dataset to synthesize new images. Evaluated architectures and regularization strategies, focusing on sample quality and training stability."
+          data-es="Entrenamiento y comparación de modelos generativos en un dataset pequeño de gatos y perros para sintetizar nuevas imágenes. Evaluación de arquitecturas y estrategias de regularización, enfocada en la calidad de muestras y la estabilidad del entrenamiento.">
+          Training and comparison of generative models on a small cats vs. dogs dataset to synthesize new images.
+          Evaluated architectures and regularization strategies, focusing on sample quality and training stability.
+        </p>
+        <p data-en="Includes reproducible experiments, data augmentation pipeline, and image grids for visual inspection of model outputs."
+          data-es="Incluye experimentos reproducibles, pipeline de aumentación de datos y cuadrículas de imágenes para inspección visual de los resultados.">
+          Includes reproducible experiments, data augmentation pipeline, and image grids for visual inspection of model
+          outputs.
+        </p>
+        <ul class="tech">
+          <li>Python</li>
+          <li>PyTorch</li>
+          <li>GANs / VAEs</li>
+          <li>NumPy</li>
+        </ul>
+      </article>
+
+      <!-- SQL Interpreter -->
+      <article class="card">
+        <h3 data-en="SQL Interpreter" data-es="Intérprete de SQL">SQL Interpreter</h3>
+        <p data-en="Created an interpreter for SQL using Python and ANTLR4. Integrated Pandas to handle CSV data and Streamlit for a simple graphical interface."
+          data-es="Creación de un intérprete de SQL utilizando Python y ANTLR4. Integración de Pandas para manejar datos CSV y Streamlit para una interfaz gráfica sencilla.">
+          Created an interpreter for SQL using Python and ANTLR4. Integrated Pandas to handle CSV data and Streamlit for
+          a simple graphical interface.
+        </p>
+        <ul class="tech">
+          <li>Python</li>
+          <li>ANTLR4</li>
+          <li>Pandas</li>
+          <li>Streamlit</li>
+        </ul>
+      </article>
+
+      <!-- KD-Tree -->
+      <article class="card">
+        <h3 data-en="Implementation of a Data Structure" data-es="Implementación de una estructura de datos">
+          Implementation of a Data Structure</h3>
+        <p data-en="Implementation of a KD-Tree to organize points in k-dimensional space and enable efficient nearest-neighbor searches via hierarchical space partitioning."
+          data-es="Implementación de un KD-Tree para organizar puntos en un espacio k-dimensional y permitir búsquedas de vecino más cercano de forma eficiente mediante partición jerárquica del espacio.">
+          Implementation of a KD-Tree to organize points in k-dimensional space and enable efficient nearest-neighbor
+          searches via hierarchical space partitioning.
+        </p>
+        <ul class="tech">
+          <li>C++</li>
+        </ul>
+      </article>
+
+      <!-- Local Search / Bicing -->
+      <article class="card">
+        <h3 data-en="Use of Artificial Intelligence Algorithms" data-es="Uso de algoritmos de inteligencia artificial">
+          Use of Artificial Intelligence Algorithms</h3>
+        <p data-en="Applied local search algorithms (Hill Climbing and Simulated Annealing) to optimize bike redistribution planning for urban stations, minimizing transport costs."
+          data-es="Aplicación de algoritmos de búsqueda local (Hill Climbing y Simulated Annealing) para optimizar la redistribución de bicicletas entre estaciones urbanas, minimizando los costes de transporte.">
+          Applied local search algorithms (Hill Climbing and Simulated Annealing) to optimize bike redistribution
+          planning for urban stations, minimizing transport costs.
+        </p>
+        <ul class="tech">
+          <li>Java</li>
+          <li>Local search</li>
+        </ul>
       </article>
     </section>
-    <dialog id="dialog">
-      Thank you so much for taking the time to view my portfolio! If you have any questions, don't hesitate to contact me via email or LinkedIn :)
-      <button class="boton" id="cerrar">Close</button>
-    </dialog>
+  </div>
 
-    
-    <footer id="footer" class="container">
-      <button class="boton" id="abrir">Thank you!</button>
-    </footer>
-    <script>
-      window.abrir.addEventListener('click', () => {
-        window.dialog.showModal()
-      })
-      window.cerrar.addEventListener('click', () => {
-        window.dialog.close()
-      })
-    </script>
-  </body>
+  <!-- Dialog -->
+  <dialog id="dialog">
+    <span
+      data-en="Thank you so much for taking the time to view my portfolio! If you have any questions, don't hesitate to contact me via email or LinkedIn :)"
+      data-es="¡Gracias por tomarte el tiempo de ver mi portfolio! Si tienes cualquier pregunta, no dudes en contactarme por email o LinkedIn :)">
+      Thank you so much for taking the time to view my portfolio! If you have any questions, don't hesitate to contact
+      me via email or LinkedIn :)
+    </span>
+    <div class="dialog-actions">
+      <button class="btn" id="closeDialog" data-en="Close" data-es="Cerrar">Close</button>
+    </div>
+  </dialog>
+
+  <script>
+    // Cerrar diálogo (si lo usas más adelante)
+    const dialog = document.getElementById('dialog');
+    const closeDialog = document.getElementById('closeDialog');
+    if (closeDialog) closeDialog.addEventListener('click', () => dialog.close());
+
+    // Toggle de idioma
+    const button = document.getElementById("toggle-lang");
+    const translatables = document.querySelectorAll("[data-en][data-es]");
+    let currentLang = "en"; // idioma inicial
+
+    function applyLang(lang) {
+      document.documentElement.lang = lang;
+      button.textContent = (lang === "en") ? "ES" : "EN"; // muestra el idioma al que vas a cambiar
+      translatables.forEach(el => { el.textContent = el.dataset[lang]; });
+    }
+
+    button.addEventListener("click", () => {
+      currentLang = (currentLang === "en") ? "es" : "en";
+      applyLang(currentLang);
+    });
+
+    // Inicializa por si el contenido del DOM cambia
+    applyLang(currentLang);
+  </script>
+</body>
+
 </html>
